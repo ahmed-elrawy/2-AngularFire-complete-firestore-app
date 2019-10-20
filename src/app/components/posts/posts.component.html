@@ -1,0 +1,29 @@
+<div *ngIf="post$ | async as post">
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.content }}</p>
+
+    <form [formGroup]="edit">
+        <div>
+            <label for="title">title</label>
+            <input formControlName="title" text="title">
+        </div>
+        <div>
+            <label for="content">title</label>
+            <input formControlName="content" id="content" type="text">
+        </div>
+    </form>
+    <button class="button is-danger" (click)="deletePost()" *ngIf="auth.canDelete(user)">
+
+        Delete Post
+    </button>
+
+    <button class="button is-warning" (click)="editeTitle()" *ngIf="auth.canEdit(user)">
+
+        Edit title
+    </button>
+    <button class="button is-warning" (click)="editeContent()" *ngIf="auth.canEdit(user)">
+
+        Edit content
+    </button>
+
+</div>
